@@ -11,7 +11,6 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
-@ExtendWith(MockitoExtension.class)
 public class Tester {
 
     @Test
@@ -28,7 +27,7 @@ public class Tester {
     }
 
     @Test
-    @Tag("integration")
+    @Tag("integrationTest")
     public void testIntegration(){
         assertTrue(true);
     }

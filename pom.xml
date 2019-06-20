@@ -12,6 +12,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
+        <skipIntegrationTests>true</skipIntegrationTests>
     </properties>
 
     <dependencies>
@@ -40,5 +41,45 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+
+    <build>
+    <finalName>if17b077</finalName>
+    <plugins>
+
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>2.22.2</version>
+            <configuration>
+                <includes>
+                    <include>**/*.*</include>
+                </includes>
+                <excludedGroups>integrationTest</excludedGroups>
+            </configuration>
+        </plugin>
+
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-failsafe-plugin</artifactId>
+            <version>2.22.2</version>
+            <configuration>
+                <includes>
+                    <include>**/*.*</include>
+                </includes>
+                <skipTests>${skipIntegrationTests}</skipTests>
+                <groups>integrationTest</groups>
+            </configuration>
+            <executions>
+                <execution>
+                    <goals>
+                        <goal>integration-test</goal>
+                        <goal>verify</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
+    </plugins>
+</build>
 
 </project>
